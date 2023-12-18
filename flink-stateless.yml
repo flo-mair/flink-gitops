@@ -3,9 +3,6 @@ kind: FlinkDeployment
 metadata:
   name: basic-example
 spec:
-  flinkConfiguration:
-    state.checkpoints.dir: "s3://kubernetes-pipelineflinkbucket95c16a61-rqam5rpab6iv/checkpoints/"
-    state.savepoints.dir: "s3://kubernetes-pipelineflinkbucket95c16a61-rqam5rpab6iv/savepoints/"
   image: flink:1.17
   flinkVersion: v1_17
   emrReleaseLabel: "emr-6.14.0-flink-latest"
@@ -13,7 +10,7 @@ spec:
   flinkConfiguration:
     taskmanager.numberOfTaskSlots: "2"
   jobManager:
-    storageDir: "s3://kubernetes-pipelineflinkbucket95c16a61-rqam5rpab6iv/jobmanager/"
+    highAvailabilityEnabled: false
     resource:
       memory: "2048m"
       cpu: 1
@@ -22,6 +19,6 @@ spec:
       memory: "2048m"
       cpu: 1
   job:
-    jarURI: s3://kubernetes-pipelineflinkbucket95c16a61-rqam5rpab6iv/Job.jar
+    jarURI: local:///opt/flink/examples/streaming/StateMachineExample.jar
     parallelism: 2
     upgradeMode: stateless
