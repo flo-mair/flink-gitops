@@ -32,5 +32,5 @@ spec:
               value: flink-s3-fs-presto-1.17.2.jar
   job:
     jarURI: local:///opt/flink/examples/streaming/StateMachineExample.jar
-    parallelism: 2
+    parallelism: 1
     upgradeMode: stateless
