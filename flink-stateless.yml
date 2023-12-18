@@ -9,7 +9,6 @@ spec:
   executionRoleArn: "arn:aws:iam::809032347958:role/emrRole-us-east-2-kubernetes"
   flinkConfiguration:
     taskmanager.numberOfTaskSlots: "2"
-  serviceAccount: flink
   jobManager:
     resource:
       memory: "2048m"
