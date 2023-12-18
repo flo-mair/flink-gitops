@@ -28,8 +28,8 @@ spec:
       containers:
        - name: flink-main-container
         env:
-            - name: ENABLE_BUILT_IN_PLUGINS
-            value: flink-s3-fs-presto-1.17.2.jar
+          - name: ENABLE_BUILT_IN_PLUGINS
+          value: flink-s3-fs-presto-1.17.2.jar
   job:
     jarURI: local:///opt/flink/examples/streaming/StateMachineExample.jar
     parallelism: 2
