@@ -4,16 +4,16 @@ metadata:
   name: basic-example
 spec:
   flinkConfiguration:
-    state.checkpoints.dir: "local:///tmp/checkpoints/"
-    state.savepoints.dir: "local:///tmp/savepoints/"
+    state.checkpoints.dir: "s3://kubernetes-pipelineflinkbucket95c16a61-rqam5rpab6iv/checkpoints/"
+    state.savepoints.dir: "s3://kubernetes-pipelineflinkbucket95c16a61-rqam5rpab6iv/savepoints/"
   image: flink:1.17
   flinkVersion: v1_17
-  emrReleaseLabel: "emr-6.15.0-flink-latest"
+  emrReleaseLabel: "emr-6.14.0-flink-latest"
   executionRoleArn: "arn:aws:iam::809032347958:role/emrRole-us-east-2-kubernetes"
   flinkConfiguration:
     taskmanager.numberOfTaskSlots: "2"
   jobManager:
-    storageDir: "local:///tmp/jobmanager/"
+    storageDir: "s3://kubernetes-pipelineflinkbucket95c16a61-rqam5rpab6iv/jobmanager/"
     resource:
       memory: "2048m"
       cpu: 1
