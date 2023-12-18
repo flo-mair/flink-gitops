@@ -5,6 +5,8 @@ metadata:
 spec:
   image: flink:1.17
   flinkVersion: v1_17
+  emrReleaseLabel: "emr-6.15.0-flink-latest"
+  executionRoleArn: "arn:aws:iam::809032347958:role/emrRole-us-east-2-kubernetes"
   flinkConfiguration:
     taskmanager.numberOfTaskSlots: "2"
   serviceAccount: flink
