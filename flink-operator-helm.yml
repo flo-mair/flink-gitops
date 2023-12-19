@@ -3,8 +3,15 @@ kind: Application
 metadata:
   name: flink-kubernetes-operator
 spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: flink
   project: default
   source:
     repoURL: https://github.com/apache/flink-kubernetes-operator
     targetRevision: main
     path: helm/flink-kubernetes-operator
+    helm:
+      parameters:
+        - name: image.repository
+          value: ghcr.io/apache/flink-kubernetes-operator
