@@ -12,7 +12,7 @@ spec:
     state.checkpoints.dir: "s3://kubernetes-flinkbucket35766a01-twogvljjp6q5/checkpoints/"
     state.savepoints.dir: "s3://kubernetes-flinkbucket35766a01-twogvljjp6q5/savepoints/"
   jobManager:
-    storageDir: "s3://kubernetes-flinkbucket35766a01-twogvljjp6q5/jobmanager/""
+    storageDir: "s3://kubernetes-flinkbucket35766a01-twogvljjp6q5/jobmanager/"
     resource:
       memory: "2048m"
       cpu: 1
