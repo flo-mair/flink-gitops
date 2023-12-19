@@ -34,3 +34,7 @@ spec:
     jarURI: local:///opt/flink/examples/streaming/StateMachineExample.jar
     parallelism: 2
     upgradeMode: stateless
+  tolerations:
+  - key: "workload"
+    operator: "Exists"
+    effect: "NoSchedule"
