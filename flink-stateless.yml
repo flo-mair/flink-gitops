@@ -9,9 +9,10 @@ spec:
   executionRoleArn: "arn:aws:iam::809032347958:role/emrRole-us-east-2-kubernetes"
   flinkConfiguration:
     taskmanager.numberOfTaskSlots: "2"
+    state.checkpoints.dir: "s3://kubernetes-flinkbucket35766a01-twogvljjp6q5/checkpoints/"
+    state.savepoints.dir: "s3://kubernetes-flinkbucket35766a01-twogvljjp6q5/savepoints/"
   jobManager:
-    highAvailabilityEnabled: false
-    replicas: 1
+    storageDir: "s3://kubernetes-flinkbucket35766a01-twogvljjp6q5/jobmanager/""
     resource:
       memory: "2048m"
       cpu: 1
