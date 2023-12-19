@@ -1,0 +1,9 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: flink-kubernetes-operator
+spec:
+  source:
+    repoURL: https://github.com/apache/flink-kubernetes-operator
+    targetRevision: main
+    path: helm/flink-kubernetes-operator
