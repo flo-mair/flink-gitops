@@ -4,14 +4,20 @@ metadata:
   name: flink-kubernetes-operator
 spec:
   destination:
-    server: 'https://kubernetes.default.svc'
+    name: ''
     namespace: flink
-  project: default
+    server: 'https://kubernetes.default.svc'
   source:
-    repoURL: https://github.com/apache/flink-kubernetes-operator
-    targetRevision: main
     path: helm/flink-kubernetes-operator
+    repoURL: 'https://github.com/apache/flink-kubernetes-operator'
+    targetRevision: main
     helm:
       parameters:
         - name: image.repository
           value: ghcr.io/apache/flink-kubernetes-operator
+        - name: operatorServiceAccount.create
+          value: 'false'
+        - name: jobServiceAccount.create
+          value: 'false'
+  sources: []
+  project: default
