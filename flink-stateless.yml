@@ -2,9 +2,10 @@ apiVersion: flink.apache.org/v1beta1
 kind: FlinkDeployment
 metadata:
   name: basic-example
+  namespace: flink
 spec:
-  image: flink:1.17
-  flinkVersion: v1_17
+  image: flink:1.16
+  flinkVersion: v1_16
   flinkConfiguration:
     taskmanager.numberOfTaskSlots: "2"
     state.savepoints.dir: file:///flink/data/checkpoint/savepoints
