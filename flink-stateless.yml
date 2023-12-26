@@ -2,23 +2,12 @@ apiVersion: flink.apache.org/v1beta1
 kind: FlinkDeployment
 metadata:
   name: basic-example
-  namespace: flink
 spec:
-  image: flink:1.16
-  flinkVersion: v1_16
+  image: flink:1.17
+  flinkVersion: v1_17
   flinkConfiguration:
     taskmanager.numberOfTaskSlots: "2"
-    state.savepoints.dir: file:///flink/data/checkpoint/savepoints
-    state.checkpoints.dir: file:///flink/data/checkpoint/checkpoints
-    high-availability: org.apache.flink.kubernetes.highavailability.KubernetesHaServicesFactory
-    high-availability.storageDir: file:///flink/data/checkpoint/ha
-    job-result-store.storage-path: file:///flink/data/checkpoint/job-result-store
-    # restartNonce: 123 # Application restarts without spec change
-    kubernetes.operator.periodic.savepoint.interval: 1h # periodic savepoint triggering
-    kubernetes.operator.deployment.rollback.enabled: "true"
-    env.log.dir: "/flink/data/log"
-    env.taskmanager.tmp.dirs: "/flink/data/tmp"
-  serviceAccount: flink-job-sa
+  serviceAccount: flink-job
   jobManager:
     resource:
       memory: "2048m"
@@ -27,25 +16,6 @@ spec:
     resource:
       memory: "2048m"
       cpu: 1
-  podTemplate:
-    apiVersion: v1
-    kind: Pod
-    metadata:
-      name: pod-template
-      labels:
-        workload: flink
-    spec:
-      nodeSelector:
-        NodeGroupType: "flink-graviton"
-      tolerations:
-        - key: "flink-graviton"
-          operator: exists
-          effect: "NoSchedule"
-      containers:
-        - name: flink-main-container
-          env:
-            - name: ENABLE_BUILT_IN_PLUGINS
-              value: flink-s3-fs-presto-1.17.2.jar
   job:
     jarURI: local:///opt/flink/examples/streaming/StateMachineExample.jar
     parallelism: 2
